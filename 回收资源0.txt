@@ -1,0 +1,17 @@
+end:
+    // 结束回收工作
+    fclose(fp_yuv);
+    fclose(fp_264);
+ 
+    sws_freeContext(sws_ctx);
+    av_free(out_buffer);
+    av_frame_free(&frame);
+    av_frame_free(&yuvFrame);
+    avcodec_close(pCodecContext);
+    avcodec_free_context(&pCodecContext);
+    avformat_close_input(&pFormatContext);
+    avformat_free_context(pFormatContext);
+ 
+    (*env)->ReleaseStringUTFChars(env, input_path_jstr, input_path_cstr);
+    (*env)->ReleaseStringUTFChars(env, output_path_jstr, output_path_cstr);
+    return 0;
