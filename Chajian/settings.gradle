@@ -1,0 +1,4 @@
+include ':mylibrary'
+include ':master'
+include ':plugin'
+rootProject.name = "Chajian"
